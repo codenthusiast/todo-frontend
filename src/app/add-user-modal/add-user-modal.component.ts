@@ -11,8 +11,9 @@ import { UserService } from '../services/user.service';
 })
 export class AddUserModalComponent implements OnInit {
 
-  user: CreateUser = {
-    name: '',
+  user: any = {
+    name: this.data?.user?.name,
+    id: this.data?.user?.id
   };
   public event: EventEmitter<any> = new EventEmitter();
   

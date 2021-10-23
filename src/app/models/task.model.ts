@@ -2,13 +2,14 @@ export interface GetUserTask{
     description: string;
     id:          number;
     userId:      number;
-    state:       TaskState
+    taskState:   TaskState
 }
 
 export interface CreateUserTask{
+    taskId:      number;
     description: string;
     userId:      number;
-    state:       TaskState
+    taskState:       TaskState
 }
 
 export enum TaskState{

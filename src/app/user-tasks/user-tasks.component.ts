@@ -24,30 +24,52 @@ export class UserTasksComponent implements OnInit {
     private router: Router
   ) {}
 
-  displayedColumns = ['id', 'description', 'state', 'delete', 'edit'];
+  displayedColumns = ['id', 'description', 'state', 'action'];
   userId: any = this.route.snapshot.paramMap.get('id')!;
   dataSource = new TaskDataSource(this.userService, this.userId);
+  selectedTaskId: number = 0;
 
   ngOnInit(): void {
   }
 
-  openDialog(): void {
+  openDialog(type: string, task: GetUserTask | null): void {
     let dialogRef = this.dialog.open(AddTaskModalComponent, {
       width: '600px',
-      data: 'Create Task',
+      data: {
+        title: type === 'edit'? 'Edit task': 'Create Task',
+        type,
+        task
+      },
 
     });
 
     dialogRef.componentInstance.event.subscribe((result: { data: CreateUserTask; }) => {
       console.log(result)
       result.data.userId = parseInt(this.userId);
-      this.taskService.createTask(result.data).subscribe((_) => {
-        this.dataSource = new TaskDataSource(this.userService, this.userId);
-      });
+      if(type === 'edit'){
+
+        this.taskService.updateTask(result.data, this.selectedTaskId).subscribe((_) => {
+          this.dataSource = new TaskDataSource(this.userService, this.userId);
+        });
+      }else{
+        
+        this.taskService.createTask(result.data).subscribe((_) => {
+          this.dataSource = new TaskDataSource(this.userService, this.userId);
+        });
+      }
     });
   }
 
-  listUserTasks(): void {}
+  deleteTask(taskId: number): void {
+            
+    this.taskService.deleteTask(taskId).subscribe((_) => {
+      this.dataSource = new TaskDataSource(this.userService, this.userId);
+    });
+  }
+  editTask(task: GetUserTask): void {
+    this.selectedTaskId = task.id;
+    this.openDialog('edit', task);
+  }
 }
 
 export class TaskDataSource extends DataSource<any> {

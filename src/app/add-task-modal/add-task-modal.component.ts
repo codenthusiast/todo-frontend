@@ -19,14 +19,16 @@ export class AddTaskModalComponent implements OnInit {
   }
 
   task: CreateUserTask = {
-    description: '',
-    userId: 0,
-    state: 0
+    description: this.data?.task?.description,
+    userId: this.data?.task?.userId,
+    taskState: this.data?.task?.taskState,
+    taskId: 0
   };
   
   public event: EventEmitter<any> = new EventEmitter();
   
   ngOnInit(): void {
+    console.log(this.task)
   }
 
   onNoClick(): void {

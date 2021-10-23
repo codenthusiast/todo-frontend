@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>{{data}}</h1>
+<h1 mat-dialog-title>{{data.title}}</h1>
 <div mat-dialog-content>
   <form class="example-form" (ngSubmit)="onSubmit()">
     <mat-form-field>
@@ -6,11 +6,11 @@
     </mat-form-field>
     <mat-form-field>
       <!-- <input matInput placeholder="Enter name" type="text" required > -->
-      <mat-select [(ngModel)]="task.state" name="state" required>
-          <mat-option value="0">
+      <mat-select [(value)]="task.taskState" name="state" required>
+          <mat-option [value]="0">
               Todo
           </mat-option>
-          <mat-option value="1">
+          <mat-option [value]="1">
               Done
           </mat-option>
       </mat-select>
