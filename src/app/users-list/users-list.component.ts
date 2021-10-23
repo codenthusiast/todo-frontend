@@ -33,6 +33,10 @@ export class UsersListComponent implements OnInit {
       });
     });
   }
+
+  listUserTasks(): void{
+    
+  }
 }
 
 export class UserDataSource extends DataSource<any> {
@@ -45,4 +49,6 @@ export class UserDataSource extends DataSource<any> {
   }
 
   disconnect() {}
+
+
 }

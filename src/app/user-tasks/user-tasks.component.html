@@ -1,1 +1,69 @@
-<p>user-tasks works!</p>
+<div>
+    <br>
+      <div class="container">
+          <div class="container">
+            <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+                <div class="blocks">
+                    <button button="submit" mat-raised-button color="primary" (click)="openDialog()">
+                        <mat-icon>add</mat-icon> Create Task
+                    </button>
+                </div>
+          </div>
+      </div>
+      <br>
+      <div class="container">
+        <div fxLayout="row" fxLayoutAlign="center center" class="content">
+          <mat-card class="card" >
+            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+              <h3>All tasks</h3>
+            </mat-card-title>
+            <mat-card-content>
+                <div class="">
+                    <mat-table #table [dataSource]="dataSource" mat-elevation-z8 demo-table>
+                    <!-- <ng-container matColumnDef="date_posted">
+                      <mat-header-cell *matHeaderCellDef> Date Posted </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.date_posted  | date: 'd/M/y'}} </mat-cell>
+                    </ng-container> -->
+                      <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef> Task Id </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="state">
+                        <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="delete">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                          <a
+                              type="button">
+                            <mat-icon class="icon">delete</mat-icon>
+                          </a>
+                        </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="edit">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                          <a
+                              type="button">
+                            <mat-icon class="icon">edit</mat-icon>
+                          </a>
+                        </mat-cell>
+                      </ng-container>
+                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row [routerLink]="['/tasks', row.id]" routerLinkActive="active" *matRowDef="let row; columns: displayedColumns;"
+                            (click)="listUserTasks()"
+                            
+                      ></mat-row>
+                    </mat-table>
+                  </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>

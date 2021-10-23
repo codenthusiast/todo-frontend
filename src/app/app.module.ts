@@ -14,6 +14,7 @@ import { TaskService } from './services/task.service';
 import { AddUserModalComponent } from './add-user-modal/add-user-modal.component';
 import { FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import { AddTaskModalComponent } from './add-task-modal/add-task-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     UsersListComponent,
     UserTasksComponent,
     AddUserModalComponent,
+    AddTaskModalComponent,
     
   ],
   imports: [

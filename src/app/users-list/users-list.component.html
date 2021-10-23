@@ -18,8 +18,8 @@
               <h3>All users</h3>
             </mat-card-title>
             <mat-card-content>
-                <div class="example-container mat-elevation-z8">
-                    <mat-table #table [dataSource]="dataSource">
+                <div class="">
+                    <mat-table #table [dataSource]="dataSource" mat-elevation-z8 demo-table>
                     <!-- <ng-container matColumnDef="date_posted">
                       <mat-header-cell *matHeaderCellDef> Date Posted </mat-header-cell>
                       <mat-cell *matCellDef="let element"> {{element.date_posted  | date: 'd/M/y'}} </mat-cell>
@@ -51,7 +51,10 @@
                         </mat-cell>
                       </ng-container>
                       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                      <mat-row [routerLink]="['/tasks', row.id]" routerLinkActive="active" *matRowDef="let row; columns: displayedColumns;"
+                            (click)="listUserTasks()"
+                            
+                      ></mat-row>
                     </mat-table>
                   </div>
             </mat-card-content>
