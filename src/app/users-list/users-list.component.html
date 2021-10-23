@@ -1,0 +1,66 @@
+<div>
+    <br>
+      <div class="container">
+          <div class="container">
+            <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+                <div class="blocks">
+                    <button button="submit" mat-raised-button color="primary" (click)="openDialog('create', null)">
+                        <mat-icon>add</mat-icon> Create user
+                    </button>
+                </div>
+          </div>
+      </div>
+      <br>
+      <div class="container">
+        <div fxLayout="row" fxLayoutAlign="center center" class="content">
+          <mat-card class="card" >
+            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+              <h3>All users</h3>
+            </mat-card-title>
+            <mat-card-content>
+                <div class="">
+                    <mat-table #table [dataSource]="dataSource" mat-elevation-z8 demo-table>
+                    <!-- <ng-container matColumnDef="date_posted">
+                      <mat-header-cell *matHeaderCellDef> Date Posted </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.date_posted  | date: 'd/M/y'}} </mat-cell>
+                    </ng-container> -->
+                      <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef> User Id </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="action">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="deleteUser(element.id)">
+                              <mat-icon>delete</mat-icon>
+                              <span>Delete</span>
+                            </button>
+                            <button mat-menu-item (click)="editUser(element)">
+                              <mat-icon>edit</mat-icon>
+                              <span>Edit</span>
+                            </button>
+                            <button [routerLink]="['/tasks', element.id]" routerLinkActive="active" mat-menu-item>
+                              <mat-icon>visibility</mat-icon>
+                              <span>View tasks</span>
+                            </button>
+                          </mat-menu>
+                        </mat-cell>
+                      </ng-container>
+                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                  </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
