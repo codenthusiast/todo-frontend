@@ -1,7 +1,7 @@
 import { DataSource } from '@angular/cdk/table';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component';
 import { CreateUserTask, GetUserTask } from '../models/task.model';
 import { GetUser } from '../models/user.model';
@@ -52,7 +52,7 @@ export class UserTasksComponent implements OnInit {
           this.dataSource = new TaskDataSource(this.userService, this.userId);
         });
       }else{
-        
+
         this.taskService.createTask(result.data).subscribe((_) => {
           this.dataSource = new TaskDataSource(this.userService, this.userId);
         });
@@ -61,7 +61,7 @@ export class UserTasksComponent implements OnInit {
   }
 
   deleteTask(taskId: number): void {
-            
+
     this.taskService.deleteTask(taskId).subscribe((_) => {
       this.dataSource = new TaskDataSource(this.userService, this.userId);
     });

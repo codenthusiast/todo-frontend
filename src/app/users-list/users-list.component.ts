@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataSource } from '@angular/cdk/table';
 import { UserService } from '../services/user.service';
 import { CreateUser, GetUser } from '../models/user.model';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserModalComponent } from '../add-user-modal/add-user-modal.component';
 
@@ -12,9 +12,9 @@ import { AddUserModalComponent } from '../add-user-modal/add-user-modal.componen
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  
+
   constructor(private userService: UserService, public dialog: MatDialog, ) {}
-  
+
   selectedUser: number = 0;
   displayedColumns = ['id', 'name', 'action'];
   dataSource = new UserDataSource(this.userService);
